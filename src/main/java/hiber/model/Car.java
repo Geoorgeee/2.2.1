@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name= "cars")
+@Table(name = "cars")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +45,7 @@ public class Car {
     public void setId(Long id) {
         this.id = id;
     }
+
     public Long getId() {
         return id;
     }

@@ -15,33 +15,33 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-   private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
-   @Autowired
-   public void setSessionFactory(SessionFactory sessionFactory) {
-      this.sessionFactory = sessionFactory;
-   }
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
-   @Override
-   public void add(User user) {
-      sessionFactory.getCurrentSession().save(user);
-   }
+    @Override
+    public void add(User user) {
+        sessionFactory.getCurrentSession().save(user);
+    }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public List<User> listUsers() {
-      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
-      return query.getResultList();
-   }
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> listUsers() {
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+        return query.getResultList();
+    }
 
-   @Override
-   public User takeOwner(int series, String model) {
-      Session session = sessionFactory.getCurrentSession();
-      Query<User> query = session.createQuery("SELECT u FROM User u JOIN u.car c WHERE c.model = :carModel AND c.series = :carSeries", User.class);
-      query.setParameter("carModel", model);
-      query.setParameter("carSeries", series);
-      User user = query.uniqueResult();
-      return user;
-   }
+    @Override
+    public User takeOwner(int series, String model) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<User> query = session.createQuery("SELECT u FROM User u JOIN u.car c WHERE c.model = :carModel AND c.series = :carSeries", User.class);
+        query.setParameter("carModel", model);
+        query.setParameter("carSeries", series);
+        User user = query.uniqueResult();
+        return user;
+    }
 
 }
