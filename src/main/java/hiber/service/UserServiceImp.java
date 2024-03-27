@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class UserServiceImp implements UserService {
 
+   private final UserDao userDao;
+
    @Autowired
-   private UserDao userDao;
+   public UserServiceImp(UserDao userDao) {
+      this.userDao = userDao;
+   }
 
    @Transactional
    @Override
@@ -28,9 +32,9 @@ public class UserServiceImp implements UserService {
    }
 
    @Override
-   @Transactional
-   public User whoOwner(int series, String model) {
-      return userDao.whoOwner(series, model);
+   @Transactional(readOnly = true)
+   public User takeOwner(int series, String model) {
+      return userDao.takeOwner(series, model);
    }
 
 

@@ -23,7 +23,7 @@ public class MainApp {
       User user3 = new User("user12","bobik","asd@mail.ru",car3);
 
       userService.add(user);
-      System.out.println(userService.whoOwner(1,"bmw").toString());
+      System.out.println(userService.takeOwner(1,"bmw").toString());
 
 
 

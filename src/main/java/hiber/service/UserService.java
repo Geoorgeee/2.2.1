@@ -9,5 +9,5 @@ public interface UserService {
     void add(User user);
     List<User> listUsers();
 
-    User whoOwner(int series, String model);
+    User takeOwner(int series, String model);
 }
