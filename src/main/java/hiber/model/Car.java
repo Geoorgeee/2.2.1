@@ -21,13 +21,14 @@ public class Car {
 
     }
 
-    public void setSeries(int series) {
-        this.series = series;
-    }
+
 
     public Car(int series, String model) {
         this.series = series;
         this.model = model;
+    }
+    public void setSeries(int series) {
+        this.series = series;
     }
 
     public void setModel(String model) {
